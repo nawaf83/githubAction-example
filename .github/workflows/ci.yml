@@ -28,7 +28,18 @@ jobs:
       with:
         name: build-artifacts
         path: build/libs/**
+  Test:
+    runs-on: ubuntu-latest
 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'adopt'
+        java-version: '17'
     - name: Run Unit Test
       run: gradle test
 
